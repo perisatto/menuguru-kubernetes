@@ -34,36 +34,32 @@ resource "aws_eks_cluster" "my_cluster" {
 resource "aws_eks_node_group" "node_group_1" {
   cluster_name    = aws_eks_cluster.my_cluster.name
   node_group_name = "node-group-1"
-  node_role_arn   = aws_iam_role.eks_role.arn
+  node_role_arn   = "arn:aws:iam::774305030127:role/LabRole"
   subnet_ids      = [
-    data.aws_subnet.private_subnet_1.id,
-    data.aws_subnet.private_subnet_2.id,
+    aws_subnet.private_subnet_1.id,
+    aws_subnet.private_subnet_2.id
   ]
 
   scaling_config {
-    desired_size = 2
-    max_size     = 3
+    desired_size = 1
+    max_size     = 2
     min_size     = 1
   }
-
-  instance_type = "t3.medium"
 }
 
 # create second node group
 resource "aws_eks_node_group" "node_group_2" {
   cluster_name    = aws_eks_cluster.my_cluster.name
   node_group_name = "node-group-2"
-  node_role_arn   = aws_iam_role.eks_role.arn
+  node_role_arn   = "arn:aws:iam::774305030127:role/LabRole"
   subnet_ids      = [
-    data.aws_subnet.private_subnet_1.id,
-    data.aws_subnet.private_subnet_2.id,
+    aws_subnet.private_subnet_1.id,
+    aws_subnet.private_subnet_2.id
   ]
 
   scaling_config {
-    desired_size = 2
-    max_size     = 3
+    desired_size = 1
+    max_size     = 2
     min_size     = 1
   }
-
-  instance_type = "t3.medium"
 }
