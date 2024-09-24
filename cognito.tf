@@ -20,7 +20,7 @@ resource "aws_cognito_user_pool" "main" {
   schema {
     name = "id"
     attribute_data_type = "Number"
-    required = true
+    required = false
     mutable = true
   }
   
