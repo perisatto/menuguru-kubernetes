@@ -56,5 +56,5 @@ resource "aws_cognito_user_pool_client" "client" {
   allowed_oauth_flows = ["ALLOW_REFRESH_TOKEN_AUTH", "ALLOW_USER_PASSWORD_AUTH"]
   
   generate_secret     = true
-  callback_urls       = "https://example.com/"
+  callback_urls       = ["https://example.com"]
 }
